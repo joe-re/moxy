@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^2.1.4",
+    "http-proxy": "^1.13.1",
+    "logatim": "^0.4.4"
+  }
 }

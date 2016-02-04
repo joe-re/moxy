@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+"use strict";
+
+const commandLineArgs = require('command-line-args');
+const moxy = require('../src/moxy');
+const logatim = require('logatim');
+logatim.setLevel('info');
+
+const cli = commandLineArgs([
+  { name: 'target', alias: 't', type: String },
+  { name: 'port', alias: 'p', type: Number, defaultValue: 3000 },
+]);
+
+const options = cli.parse();
+if (!options.target) {
+  logatim.red.bold.error("please target server specify!");
+  return;
+}
+
+logatim.blue.white.bold.info("moxy start!");
+logatim.blue.gray.info('-----------------------------');
+logatim.blue.magenta.info(`target: ${options.target}`);
+logatim.blue.magenta.info(`port  : ${options.port}`);
+
+moxy.createProxyServer(options).listen(options.port);
